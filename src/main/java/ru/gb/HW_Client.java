@@ -6,23 +6,23 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client1 {
+public class HW_Client {
 
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
 
     public static void main(String[] args) {
-        new Client1();
+        new HW_Client();
     }
 
-    public Client1() {
+    public HW_Client() {
         start();
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
 
         while (true) {
             try {
-                out.writeUTF(scanner.nextLine());
+                out.writeUTF(scanner1.nextLine());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -38,12 +38,12 @@ public class Client1 {
                 try {
                     while (true) {
                         final String message = in.readUTF();
+                        System.out.println("Server: " + message);
                         if ("/end".equalsIgnoreCase(message)) {
                             System.out.println("Received command: end");
                             closeConnection();
                             break;
                         }
-                        System.out.println(message);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
