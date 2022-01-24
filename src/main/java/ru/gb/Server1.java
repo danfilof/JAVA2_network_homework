@@ -6,19 +6,19 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public class Server1 {
 
     public static void main(String[] args) {
-      new Server().start();
+        new Server1().start();
     }
 
     private void start() {
         Socket socket = null;
 
-        try(ServerSocket serverSocket = new ServerSocket(8788)) {
-            System.out.println("Server is on, waiting for connection...");
+        try(ServerSocket serverSocket = new ServerSocket(8778)) {
+            System.out.println("Server1 is on, waiting for connection...");
             socket = serverSocket.accept();
-            System.out.println("The client has connected...");
+            System.out.println("The client has connected.");
 
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());

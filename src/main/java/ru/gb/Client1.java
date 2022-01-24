@@ -6,17 +6,17 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client {
+public class Client1 {
 
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
 
     public static void main(String[] args) {
-       new Client();
+        new Client1();
     }
 
-    public Client() {
+    public Client1() {
         start();
         Scanner scanner = new Scanner(System.in);
 
@@ -31,7 +31,7 @@ public class Client {
 
     private void start() {
         try {
-            socket = new Socket("localhost",8788);
+            socket = new Socket("localhost",8778);
             in = new DataInputStream(socket.getInputStream());
             out =  new DataOutputStream(socket.getOutputStream());
             new Thread(() ->  {
@@ -79,3 +79,4 @@ public class Client {
     }
 
 }
+
