@@ -24,12 +24,13 @@ public class Server {
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
             while (true) {
-                String message = in.readUTF();
-                if ("/end".equals(message)){
+                final String message = in.readUTF();
+                System.out.println("Received message: " + message);
+                if ("/end".equalsIgnoreCase(message)){
                     out.writeUTF("/end");
                     break;
                 }
-                out.writeUTF(message);
+                out.writeUTF("Echo: " + message);
             }
         } catch (IOException e) {
             e.printStackTrace();
