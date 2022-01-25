@@ -20,7 +20,6 @@ public class HW_Server {
         String s;
         start();
         Scanner scanner2 = new Scanner(System.in);
-       // System.out.println("Message to be sent to client: " + scanner2.nextLine());
         s = scanner2.nextLine();
         try {
             out.writeUTF(s);
@@ -50,6 +49,7 @@ public class HW_Server {
                 socket = serverSocket.accept();
                 String hostName = socket.getInetAddress().getHostName();
                 System.out.printf("The client %s has connected.", hostName);
+                System.out.println("\n");
                 in = new DataInputStream(socket.getInputStream());
                 out = new DataOutputStream(socket.getOutputStream());
                 while (true) {
