@@ -17,18 +17,20 @@ public class HW_Server {
     }
 
     public HW_Server() {
-        String s;
-        start();
-        Scanner scanner2 = new Scanner(System.in);
-        s = scanner2.nextLine();
-        try {
-            out.writeUTF(s);
-        } catch (IOException e) {
-            e.printStackTrace();
+       start();
+        send();
         }
 
-
-        while (true) {
+        private void send() {
+            String s;
+            Scanner scanner2 = new Scanner(System.in);
+            s = scanner2.nextLine();
+            try {
+                out.writeUTF(s);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            while (true) {
                 try {
                     if (socket.isClosed()) {
                         System.out.println("Socket is closed");

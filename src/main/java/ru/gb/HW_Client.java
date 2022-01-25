@@ -17,9 +17,12 @@ public class HW_Client {
     }
 
     public HW_Client() {
-        start();
-        Scanner scanner1 = new Scanner(System.in);
+       start();
+       send();
+    }
 
+    private void send() {
+        Scanner scanner1 = new Scanner(System.in);
         while (true) {
             try {
                 if (socket.isClosed()){
