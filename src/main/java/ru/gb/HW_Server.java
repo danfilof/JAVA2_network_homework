@@ -18,13 +18,13 @@ public class HW_Server {
     public HW_Server() {
         start();
         Scanner scanner2 = new Scanner(System.in);
-            System.out.println("Message to be sent to client: " + scanner2.nextLine());
+           System.out.println("Message to be sent to client: " + scanner2.nextLine());
+
         while (true) {
             try {
                 if (socket.isClosed()){
                     break;
                 }
-                System.out.println("Sent to client: " + scanner2.nextLine());
                 out.writeUTF(scanner2.nextLine());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -37,7 +37,7 @@ public class HW_Server {
 
         new Thread(() -> {
             try (ServerSocket serverSocket = new ServerSocket(8778)) {
-                System.out.println("Server1 is on, waiting for connection...");
+                System.out.println("Server is on, waiting for connection...");
                 socket = serverSocket.accept();
                 System.out.println("The client has connected.");
                 in = new DataInputStream(socket.getInputStream());
