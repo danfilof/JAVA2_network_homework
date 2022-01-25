@@ -22,6 +22,10 @@ public class HW_Client {
 
         while (true) {
             try {
+                if (socket.isClosed()){
+                    System.out.println("Socket is closed");
+                    break;
+                }
                 out.writeUTF(scanner1.nextLine());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -31,7 +35,7 @@ public class HW_Client {
 
     private void start() {
         try {
-            socket = new Socket("localhost",8778);
+            socket = new Socket("localhost",8089);
             in = new DataInputStream(socket.getInputStream());
             out =  new DataOutputStream(socket.getOutputStream());
             new Thread(() ->  {
@@ -43,7 +47,6 @@ public class HW_Client {
                             out.writeUTF("/end");
                             System.out.println("Received command: end");
                             closeConnection();
-                            socket.close();
                             break;
                         }
                     }

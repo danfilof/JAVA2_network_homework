@@ -17,38 +17,46 @@ public class HW_Server {
     }
 
     public HW_Server() {
+        String s;
         start();
         Scanner scanner2 = new Scanner(System.in);
-           System.out.println("Message to be sent to client: " + scanner2.nextLine());
+       // System.out.println("Message to be sent to client: " + scanner2.nextLine());
+        s = scanner2.nextLine();
+        try {
+            out.writeUTF(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         while (true) {
-            try {
-                if (socket.isClosed()){
-                    System.out.println("Socket is closed");
-                    break;
+                try {
+                    if (socket.isClosed()) {
+                        System.out.println("Socket is closed");
+                        break;
+                    }
+                    out.writeUTF(scanner2.nextLine());
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                out.writeUTF(scanner2.nextLine());
-            } catch (Exception  e) {
-                e.printStackTrace();
             }
         }
-    }
 
     private void start() {
          socket = null;
-
         new Thread(() -> {
-            try (ServerSocket serverSocket = new ServerSocket(8778)) {
+            try (ServerSocket serverSocket = new ServerSocket(8089)) {
                 System.out.println("Server is on, waiting for connection...");
                 socket = serverSocket.accept();
-                System.out.println("The client has connected.");
+                String hostName = socket.getInetAddress().getHostName();
+                System.out.printf("The client %s has connected.", hostName);
                 in = new DataInputStream(socket.getInputStream());
                 out = new DataOutputStream(socket.getOutputStream());
-
                 while (true) {
                     final String message = in.readUTF();
                     if ("/end".equalsIgnoreCase(message)) {
                         out.writeUTF("/end");
+                        System.out.println("Received command END");
                         break;
                     }
                     System.out.println("Client:" + message);
