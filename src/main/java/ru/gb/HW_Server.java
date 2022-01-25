@@ -15,6 +15,7 @@ public class HW_Server {
     public static void main(String[] args) {
         new HW_Server();
     }
+
     public HW_Server() {
         start();
         Scanner scanner2 = new Scanner(System.in);
@@ -23,10 +24,11 @@ public class HW_Server {
         while (true) {
             try {
                 if (socket.isClosed()){
+                    System.out.println("Socket is closed");
                     break;
                 }
                 out.writeUTF(scanner2.nextLine());
-            } catch (IOException e) {
+            } catch (Exception  e) {
                 e.printStackTrace();
             }
         }

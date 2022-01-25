@@ -40,8 +40,10 @@ public class HW_Client {
                         final String message = in.readUTF();
                         System.out.println("Server: " + message);
                         if ("/end".equalsIgnoreCase(message)) {
+                            out.writeUTF("/end");
                             System.out.println("Received command: end");
                             closeConnection();
+                            socket.close();
                             break;
                         }
                     }
