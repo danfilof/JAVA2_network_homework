@@ -29,7 +29,8 @@ public class HW_Client {
                 if (socket.isClosed()){
                     System.out.println("Socket is closed");
                     break;
-                    // При нажатии на enter или попытке что-либо послать, срабатывает вышеуказанный код, так как сокет уже закрыт, цикл прекращается, exit code 0
+                    // При нажатии на enter или попытке что-либо послать, срабатывает вышеуказанный код, так как сокет уже закрыт, цикл прекращается,
+                    // ошибка обрабатывается с exit code 0
                 }
                 out.writeUTF(scanner1.nextLine());
             } catch (IOException e) {
@@ -42,7 +43,7 @@ public class HW_Client {
         try {
             socket = new Socket("localhost",8089);
             in = new DataInputStream(socket.getInputStream());
-            out =  new DataOutputStream(socket.getOutputStream());
+            out = new DataOutputStream(socket.getOutputStream());
             // Запускаю поток, считывающий все, приходящее на порт
             new Thread(() ->  {
                 try {

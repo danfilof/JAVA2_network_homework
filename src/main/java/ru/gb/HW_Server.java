@@ -25,7 +25,7 @@ public class HW_Server {
             String s;
             Scanner scanner2 = new Scanner(System.in);
             s = scanner2.nextLine();
-            // По какой-то причине пришлось делать такой небольшой костыль, иначе IDE выдвала nullpointerexception на первое введенное из scanner2 значение
+            // По какой-то причине пришлось делать такой небольшой костыль для первого сообщения, иначе IDE выдвала nullpointerexception на первое введенное из scanner2 значение
             try {
                 out.writeUTF(s);
             } catch (IOException e) {
@@ -37,7 +37,8 @@ public class HW_Server {
                     if (socket.isClosed()) {
                         System.out.println("Socket is closed");
                         break;
-                        // При нажатии на enter или попытке что-либо послать, срабатывает вышеуказанный код, так как сокет уже закрыт, цикл прекращается, exit code 0
+                        // При нажатии на enter или попытке что-либо послать, срабатывает вышеуказанный код, так как сокет уже закрыт, цикл прекращается,
+                    // ошибка обрабатывается с exit code 0
                     }
                     out.writeUTF(scanner2.nextLine());
                 } catch (Exception e) {
