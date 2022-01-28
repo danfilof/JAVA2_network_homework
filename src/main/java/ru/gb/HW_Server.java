@@ -78,6 +78,7 @@ public class HW_Server {
             if (socket != null) {
                 try {
                     socket.close();
+                    System.exit(0);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -71,6 +71,7 @@ public class HW_Client {
         if (in != null) {
             try {
                 in.close();
+                System.exit(0);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -78,6 +79,7 @@ public class HW_Client {
         if (out != null) {
             try {
                 out.close();
+                System.exit(0);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -85,6 +87,7 @@ public class HW_Client {
         if (socket != null) {
             try {
                 socket.close();
+                System.exit(0);
             } catch (IOException e) {
                 e.printStackTrace();
             }
